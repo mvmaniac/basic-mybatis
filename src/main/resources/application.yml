@@ -1,12 +1,9 @@
 spring:
+  profiles:
+    active: local
+
   datasource:
-    platform: mysql
-    # hikari pool 를 사용하므로 hikari 로 설정함 (driver-class-name, url, username, password 등)
     hikari:
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=Asia/Seoul
-      username: test
-      password: 1234
       pool-name: MYSQL_DB
       minimum-idle: 1
       maximum-pool-size: 5
@@ -19,3 +16,10 @@ mybatis:
 logging:
   level:
     io.devfactory: debug
+
+    jdbc.sqlonly: off
+    jdbc.sqltiming: debug
+    jdbc.audit: off
+    jdbc.resultset: off
+    jdbc.resultsettable: debug
+    jdbc.connection: off

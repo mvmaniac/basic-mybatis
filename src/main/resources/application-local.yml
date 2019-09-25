@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    initialization-mode: always
+    platform: mysql
+    schema: classpath:sql/schema-${spring.datasource.platform}.sql
+    data: classpath:sql/data-${spring.datasource.platform}.sql
+
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=Asia/Seoul
+    username: test
+    password: 1234
