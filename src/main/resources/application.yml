@@ -1,3 +1,21 @@
+spring:
+  datasource:
+    platform: mysql
+    # hikari pool 를 사용하므로 hikari 로 설정함 (driver-class-name, url, username, password 등)
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=Asia/Seoul
+      username: test
+      password: 1234
+      pool-name: MYSQL_DB
+      minimum-idle: 1
+      maximum-pool-size: 5
+
+mybatis:
+  mapper-locations: mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
 logging:
   level:
     io.devfactory: debug
