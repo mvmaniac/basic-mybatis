@@ -1,4 +1,4 @@
-package io.devfactory.user;
+package io.devfactory.member;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,13 +8,13 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-public class UserController {
+public class MemberController {
 
-    private final UserService userService;
+    private final MemberService memberService;
 
-    @GetMapping("/users")
-    public List<User> selectUsers() {
-        return userService.selectUsers();
+    @GetMapping("/members")
+    public List<Member> selectMembers() {
+        return memberService.selectMembers();
     }
 
 }
