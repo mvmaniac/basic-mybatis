@@ -1,12 +1,11 @@
 package io.devfactory.member;
 
-import org.apache.ibatis.annotations.Mapper;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface MemberMapper {
 
-    List<Member> selectMembers();
+  List<Member> selectMembers();
 
 }
