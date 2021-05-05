@@ -1,13 +1,14 @@
-DROP TABLE IF EXISTS tb_member CASCADE;
+drop table if exists tb_member cascade;
 
-CREATE TABLE tb_member (
-  seq           bigint NOT NULL AUTO_INCREMENT,
-  email         varchar(50) NOT NULL,
-  name          varchar(30) NOT NULL,
-  passwd        varchar(80) NOT NULL,
-  login_count   int NOT NULL DEFAULT 0,
-  last_login_at datetime DEFAULT NULL,
-  create_at     datetime NOT NULL DEFAULT CURRENT_TIMESTAMP(),
-  PRIMARY KEY (seq),
-  CONSTRAINT unq_member_email UNIQUE (email)
+create table tb_member
+(
+    seq           bigint      not null auto_increment,
+    email         varchar(50) not null,
+    name          varchar(30) not null,
+    passwd        varchar(80) not null,
+    login_count   int         not null default 0,
+    last_login_at datetime             default null,
+    created_date  datetime    not null default current_timestamp(),
+    primary key (seq),
+    constraint unq_member_email unique (email)
 );

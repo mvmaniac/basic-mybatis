@@ -11,5 +11,14 @@ spring:
 
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
     url: jdbc:log4jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=Asia/Seoul
-    username: test
-    password: 1234
+    username: ENC[jDU4bstvrEyFDhol5ziGFg==]
+    password: ENC[rvy0JSKWX2S3Fau5AQZnIA==]
+
+logging:
+  level:
+    jdbc.sqlonly: off
+    jdbc.sqltiming: debug
+    jdbc.audit: off
+    jdbc.resultset: off
+    jdbc.resultsettable: off
+    jdbc.connection: off

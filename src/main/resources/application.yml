@@ -1,6 +1,7 @@
 spring:
   profiles:
-    active: local
+    group:
+      default: local
 
   datasource:
     hikari:
@@ -10,16 +11,19 @@ spring:
 
 mybatis:
   mapper-locations: mapper/**/*.xml
+  type-aliases-package: io.devfactory
   configuration:
-    map-underscore-to-camel-case: true
+    jdbc-type-for-null: null
+    map-underscore-to-camel-case: true # dto나 vo 사용시 camelcase로 맵핑
+    call-setters-on-nulls: true # map 사용시 null 컬럼도 리턴함
+
+jasypt:
+  encryptor:
+    bean: encryptorBean
+    property:
+      prefix: 'ENC['
+      suffix: ']'
 
 logging:
   level:
     io.devfactory: debug
-
-    jdbc.sqlonly: off
-    jdbc.sqltiming: debug
-    jdbc.audit: off
-    jdbc.resultset: off
-    jdbc.resultsettable: debug
-    jdbc.connection: off

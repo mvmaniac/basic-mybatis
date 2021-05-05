@@ -1,13 +1,16 @@
 package io.devfactory.member;
 
-import static lombok.AccessLevel.PROTECTED;
-
-import java.time.LocalDateTime;
-import java.util.StringJoiner;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.apache.ibatis.type.Alias;
 
+import java.time.LocalDateTime;
+import java.util.StringJoiner;
+
+import static lombok.AccessLevel.PROTECTED;
+
+@Alias("memberAlias")
 @NoArgsConstructor(access = PROTECTED)
 @Getter
 public class Member {
@@ -18,18 +21,18 @@ public class Member {
   private String email;
   private int loginCount;
   private LocalDateTime lastLoginAt;
-  private LocalDateTime createAt;
+  private LocalDateTime createdDate;
 
   @Builder
-  protected Member(long seq, String name, String passwd, String email, int loginCount,
-      LocalDateTime lastLoginAt, LocalDateTime createAt) {
+  private Member(long seq, String name, String passwd, String email, int loginCount,
+      LocalDateTime lastLoginAt, LocalDateTime createdDate) {
     this.seq = seq;
     this.name = name;
     this.passwd = passwd;
     this.email = email;
     this.loginCount = loginCount;
     this.lastLoginAt = lastLoginAt;
-    this.createAt = createAt;
+    this.createdDate = createdDate;
   }
 
   @Override
@@ -41,7 +44,8 @@ public class Member {
         .add("email='" + email + "'")
         .add("loginCount=" + loginCount)
         .add("lastLoginAt=" + lastLoginAt)
-        .add("createAt=" + createAt)
+        .add("createdDate=" + createdDate)
         .toString();
   }
+
 }

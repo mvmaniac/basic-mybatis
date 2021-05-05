@@ -3,15 +3,54 @@
 
 <mapper namespace="io.devfactory.member.MemberMapper">
 
-  <select id="selectMembers" resultType="io.devfactory.member.Member">
-    SELECT SEQ
-    , EMAIL
-    , NAME
-    , PASSWD
-    , LOGIN_COUNT
-    , LAST_LOGIN_AT
-    , CREATE_AT
-    FROM TB_MEMBER
+  <select id="selectMembers" resultType="memberAlias">
+    select
+        seq
+      , email
+      , name
+      , passwd
+      , login_count
+      , last_login_at
+      , create_at
+    from tb_member
+  </select>
+
+  <select id="selectMember" parameterType="long" resultType="memberAlias">
+    select
+      seq
+      , email
+      , name
+      , passwd
+      , login_count
+      , last_login_at
+      , create_at
+    from tb_member
+    where seq = #{_parameter}
+  </select>
+
+  <select id="selectMembersToMap" resultType="map">
+    select
+      seq
+      , email
+      , name
+      , passwd
+      , login_count
+      , last_login_at
+      , create_at
+    from tb_member
+  </select>
+
+  <select id="selectMemberToMap" parameterType="long" resultType="map">
+    select
+      seq
+      , email
+      , name
+      , passwd
+      , login_count
+      , last_login_at
+      , create_at
+    from tb_member
+    where seq = #{_parameter}
   </select>
 
 </mapper>

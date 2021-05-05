@@ -2,5 +2,5 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=Asia/Seoul
-    username: test
-    password: 1234
+    username : ENC[jDU4bstvrEyFDhol5ziGFg==]
+    password : ENC[rvy0JSKWX2S3Fau5AQZnIA==]
