@@ -1,18 +1,15 @@
 spring:
   datasource:
-
-    # import.sql은 data.sql과 마찬가지로 데이터을 조작하는 쿼리만 사용하며 hiberante 가 자동실행 함
-    # classpath 경로에만 있어야 하는 듯 경로 설정이 따로 없음
-    # 그리고 insert 쿼리 들이 한줄로 되어 있어야 하는듯?
-    initialization-mode: always
-    platform: mysql
-    schema: classpath:sql/schema-${spring.datasource.platform}.sql
-    data: classpath:sql/data-${spring.datasource.platform}.sql
-
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
     url: jdbc:log4jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=Asia/Seoul
     username: ENC[jDU4bstvrEyFDhol5ziGFg==]
     password: ENC[rvy0JSKWX2S3Fau5AQZnIA==]
+
+  sql:
+    init:
+      platform: mysql
+      schema-locations: classpath:sql/schema-${spring.sql.init.platform}.sql
+      data-locations: classpath:sql/data-${spring.sql.init.platform}.sql
 
 logging:
   level:

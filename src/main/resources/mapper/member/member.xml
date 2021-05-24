@@ -11,7 +11,7 @@
       , passwd
       , login_count
       , last_login_at
-      , create_at
+      , created_date
     from tb_member
   </select>
 
@@ -23,7 +23,7 @@
       , passwd
       , login_count
       , last_login_at
-      , create_at
+      , created_date
     from tb_member
     where seq = #{_parameter}
   </select>
@@ -36,7 +36,7 @@
       , passwd
       , login_count
       , last_login_at
-      , create_at
+      , created_date
     from tb_member
   </select>
 
@@ -48,7 +48,7 @@
       , passwd
       , login_count
       , last_login_at
-      , create_at
+      , created_date
     from tb_member
     where seq = #{_parameter}
   </select>
