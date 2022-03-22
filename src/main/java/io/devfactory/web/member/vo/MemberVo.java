@@ -1,4 +1,4 @@
-package io.devfactory.member;
+package io.devfactory.web.member.vo;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -10,10 +10,10 @@ import java.util.StringJoiner;
 
 import static lombok.AccessLevel.PROTECTED;
 
-@Alias("memberAlias")
+@Alias("MemberVo")
 @NoArgsConstructor(access = PROTECTED)
 @Getter
-public class Member {
+public class MemberVo {
 
   private long seq;
   private String name;
@@ -24,7 +24,7 @@ public class Member {
   private LocalDateTime createdDate;
 
   @Builder
-  private Member(long seq, String name, String passwd, String email, int loginCount,
+  private MemberVo(long seq, String name, String passwd, String email, int loginCount,
       LocalDateTime lastLoginAt, LocalDateTime createdDate) {
     this.seq = seq;
     this.name = name;
@@ -37,7 +37,7 @@ public class Member {
 
   @Override
   public String toString() {
-    return new StringJoiner(", ", Member.class.getSimpleName() + "[", "]")
+    return new StringJoiner(", ", MemberVo.class.getSimpleName() + "[", "]")
         .add("seq=" + seq)
         .add("name='" + name + "'")
         .add("passwd='" + passwd + "'")

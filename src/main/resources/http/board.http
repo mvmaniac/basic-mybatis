@@ -1,0 +1,28 @@
+### 게시판 글 저장
+POST http://localhost:8080/api/boards
+Content-Type: application/json
+
+{
+  "title": "제목이다",
+  "contents": "내용이다"
+}
+
+### 게시판 글 전체 목록 조회
+GET http://localhost:8080/api/boards
+Content-Type: application/json
+
+### 게시판 글 조회
+GET http://localhost:8080/api/boards/1
+Content-Type: application/json
+
+### 게시판 글 수정
+PUT http://localhost:8080/api/boards/1
+Content-Type: application/json
+
+{
+  "title": "제목4수정이다",
+  "contents": "내용수정이다"
+}
+
+### 게시판 글 삭제z
+DELETE http://localhost:8080/api/boards/1

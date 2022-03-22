@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.devfactory.web.board.mapper.BoardMapper">
+
+  <select id="selectBoards" resultType="BoardVo">
+    select
+      tb.seq
+      , tb.title
+      , tb.content
+      , tb.write_id
+      , tb.created_date
+    from tb_board tb
+  </select>
+
+  <select id="selectBoard" parameterType="long" resultType="BoardVo">
+    select
+      tb.seq
+      , tb.title
+      , tb.content
+      , tb.write_id
+      , tb.created_date
+    from tb_board tb
+    where tb.seq = #{_parameter}
+  </select>
+
+</mapper>

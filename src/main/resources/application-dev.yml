@@ -1,6 +1,19 @@
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=Asia/Seoul
-    username : ENC[jDU4bstvrEyFDhol5ziGFg==]
-    password : ENC[rvy0JSKWX2S3Fau5AQZnIA==]
+    hikari:
+      mysql:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/test?useSSL=false&&allowMultiQueries=true
+        username: ENC[jDU4bstvrEyFDhol5ziGFg==]
+        password: ENC[rvy0JSKWX2S3Fau5AQZnIA==]
+        pool-name: MYSQL_DB
+        minimum-idle: 1
+        maximum-pool-size: 5
+      mariadb:
+        driver-class-name: org.mariadb.jdbc.Driver
+        jdbc-url: jdbc:mariadb://localhost:5306/test
+        username: ENC[jDU4bstvrEyFDhol5ziGFg==]
+        password: ENC[rvy0JSKWX2S3Fau5AQZnIA==]
+        pool-name: MARIADB_DB
+        minimum-idle: 1
+        maximum-pool-size: 5

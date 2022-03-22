@@ -1,5 +1,6 @@
 package io.devfactory.config;
 
+import io.devfactory.global.config.JasyptConfig;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jasypt.encryption.StringEncryptor;
@@ -13,6 +14,7 @@ import org.springframework.test.context.TestPropertySource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.context.TestConstructor.AutowireMode.ALL;
 
+@SuppressWarnings("ClassCanBeRecord")
 @Slf4j
 @RequiredArgsConstructor
 @TestPropertySource(properties = {"jasypt.encryptor.password=dbgmltlr"})

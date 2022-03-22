@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.devfactory.web.member.mapper.MemberMapper">
+
+  <select id="selectMembers" resultType="MemberVo">
+    select
+      tm.seq
+      , tm.email
+      , tm.name
+      , tm.passwd
+      , tm.login_count
+      , tm.last_login_at
+      , tm.created_date
+    from tb_member tm
+  </select>
+
+  <select id="selectMember" parameterType="long" resultType="MemberVo">
+    select
+      tm.seq
+      , tm.email
+      , tm.name
+      , tm.passwd
+      , tm.login_count
+      , tm.last_login_at
+      , tm.created_date
+    from tb_member tm
+    where tm.seq = #{_parameter}
+  </select>
+
+  <select id="selectMembersToMap" resultType="map">
+    select
+      tm.seq
+      , tm.email
+      , tm.name
+      , tm.passwd
+      , tm.login_count
+      , tm.last_login_at
+      , tm.created_date
+    from tb_member tm
+  </select>
+
+  <select id="selectMemberToMap" parameterType="long" resultType="map">
+    select
+      tm.seq
+      , tm.email
+      , tm.name
+      , tm.passwd
+      , tm.login_count
+      , tm.last_login_at
+      , tm.created_date
+    from tb_member tm
+    where tm.seq = #{_parameter}
+  </select>
+
+</mapper>

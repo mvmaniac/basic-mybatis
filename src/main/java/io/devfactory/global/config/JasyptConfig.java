@@ -1,4 +1,4 @@
-package io.devfactory.config;
+package io.devfactory.global.config;
 
 import lombok.RequiredArgsConstructor;
 import org.jasypt.encryption.StringEncryptor;
