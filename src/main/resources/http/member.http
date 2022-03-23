@@ -17,14 +17,14 @@ GET http://localhost:8080/api/members/1
 Content-Type: application/json
 
 ### 회원 수정
-PUT http://localhost:8080/api/members/1
+PUT http://localhost:8080/api/members/4
 Content-Type: application/json
 
 {
   "email": "dev1@gmail.com",
-  "name": "개발자1",
-  "passwd": "1234"
+  "name": "개발자1수정",
+  "passwd": "1234수정"
 }
 
 ### 회원 삭제
-DELETE http://localhost:8080/api/members/1
+DELETE http://localhost:8080/api/members/3

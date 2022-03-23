@@ -1,15 +1,14 @@
 package io.devfactory.web.member.api;
 
+import io.devfactory.web.member.dto.MemberDto;
+import io.devfactory.web.member.service.MemberService;
+import io.devfactory.web.member.vo.MemberVo;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Map;
-
-import io.devfactory.web.member.vo.MemberVo;
-import io.devfactory.web.member.service.MemberService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RequestMapping("/api/members")
@@ -19,23 +18,42 @@ public class MemberApi {
   private final MemberService memberService;
 
   @GetMapping
-  public List<MemberVo> selectMembers() {
-    return memberService.selectMembers();
+  public ResponseEntity<List<MemberVo>> selectMembers() {
+    return ResponseEntity.ok(memberService.selectMembers());
   }
 
-  @GetMapping("/{id:[\\d]+}")
-  public MemberVo selectMember(@PathVariable("id") long id) {
-    return memberService.selectMember(id);
+  @GetMapping("/{seq:[\\d]+}")
+  public ResponseEntity<MemberVo> selectMember(@PathVariable("seq") Long seq) {
+    return ResponseEntity.ok(memberService.selectMember(seq));
   }
 
   @GetMapping("/map")
-  public List<Map<String, Object>> selectMembersToMap() {
-    return memberService.selectMembersToMap();
+  public ResponseEntity<List<Map<String, Object>>> selectMembersToMap() {
+    return ResponseEntity.ok(memberService.selectMembersToMap());
   }
 
-  @GetMapping("/map/{id:[\\d]+}")
-  public Map<String, Object> selectMemberToMap(@PathVariable("id") long id) {
-    return memberService.selectMemberToMap(id);
+  @GetMapping("/map/{seq:[\\d]+}")
+  public ResponseEntity<Map<String, Object>> selectMemberToMap(@PathVariable("seq") Long seq) {
+    return ResponseEntity.ok(memberService.selectMemberToMap(seq));
+  }
+
+  @PostMapping
+  public ResponseEntity<Object> insertMember(@RequestBody MemberDto memberDto) {
+    memberService.insertMember(memberDto);
+    return ResponseEntity.ok().build();
+  }
+
+  @PutMapping("/{seq:[\\d]+}")
+  public ResponseEntity<Object> updateMember(@PathVariable("seq") Long seq,
+      @RequestBody MemberDto memberDto) {
+    memberService.updateMember(seq, memberDto);
+    return ResponseEntity.ok().build();
+  }
+
+  @DeleteMapping("/{seq:[\\d]+}")
+  public ResponseEntity<Object> updateBoard(@PathVariable("seq") Long seq) {
+    memberService.deleteMember(seq);
+    return ResponseEntity.ok().build();
   }
 
 }

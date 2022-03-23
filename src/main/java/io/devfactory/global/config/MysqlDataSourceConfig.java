@@ -2,7 +2,8 @@ package io.devfactory.global.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import io.devfactory.global.annotation.MysqlMapper;
+import io.devfactory.global.common.annotation.MysqlMapper;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
@@ -12,7 +13,9 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.init.DataSourceInitializer;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
@@ -20,7 +23,6 @@ import javax.sql.DataSource;
 @Configuration
 public class MysqlDataSourceConfig extends DataSourceConfigSupport {
 
-  @Primary
   @ConfigurationProperties(prefix = "spring.datasource.hikari.mysql")
   @Bean
   public HikariConfig mysqlHikariConfig() {
@@ -53,9 +55,16 @@ public class MysqlDataSourceConfig extends DataSourceConfigSupport {
 
   @Primary
   @Bean
-  public SqlSessionTemplate mysqlSqlSessionTemplate(
+  public SqlSession mysqlSqlSessionTemplate(
       @Qualifier("mysqlSqlSessionFactory") SqlSessionFactory mysqlSqlSessionFactory) {
     return new SqlSessionTemplate(mysqlSqlSessionFactory);
+  }
+
+  @Primary
+  @Bean
+  public PlatformTransactionManager mySqlTxManager(
+      @Qualifier("mysqlDataSource") DataSource mysqlDataSource) {
+    return new DataSourceTransactionManager(mysqlDataSource);
   }
 
   @Bean

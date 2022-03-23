@@ -24,4 +24,31 @@
     where tb.seq = #{_parameter}
   </select>
 
+  <insert id="insertBoard" parameterType="BoardDto">
+    insert into tb_board(
+      title
+      , content
+      , write_id
+      , created_date
+    ) VALUES (
+      #{title}
+      , #{contents}
+      , #{writeId}
+      , current_timestamp(6)
+    )
+  </insert>
+
+  <update id="updateBoard">
+    update tb_board tb
+    set
+      tb.title = #{board.title}
+      , tb.content = #{board.contents}
+    where tb.seq = #{seq}
+  </update>
+
+  <delete id="deleteBoard" parameterType="long">
+    delete from tb_board
+    where seq = #{_parameter}
+  </delete>
+
 </mapper>

@@ -2,8 +2,8 @@ package io.devfactory.global.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import io.devfactory.global.annotation.MariadbMapper;
-import lombok.RequiredArgsConstructor;
+import io.devfactory.global.common.annotation.MariadbMapper;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
@@ -12,11 +12,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.init.DataSourceInitializer;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
-@RequiredArgsConstructor
 @MapperScan(basePackages = "io.devfactory.web", annotationClass = MariadbMapper.class, sqlSessionFactoryRef = "mariadbSqlSessionFactory")
 @Configuration
 public class MariadbDataSourceConfig extends DataSourceConfigSupport {
@@ -49,13 +50,19 @@ public class MariadbDataSourceConfig extends DataSourceConfigSupport {
   }
 
   @Bean
-  public SqlSessionTemplate mariadbSqlSessionTemplate(
+  public SqlSession mariadbSqlSessionTemplate(
       @Qualifier("mariadbSqlSessionFactory") SqlSessionFactory mariadbSqlSessionFactory) {
     return new SqlSessionTemplate(mariadbSqlSessionFactory);
   }
 
   @Bean
-  DataSourceInitializer mariadbDataSourceInitializer(
+  public PlatformTransactionManager mariadbTxManager(
+      @Qualifier("mariadbDataSource") DataSource mariadbDataSource) {
+    return new DataSourceTransactionManager(mariadbDataSource);
+  }
+
+  @Bean
+  public DataSourceInitializer mariadbDataSourceInitializer(
       @Qualifier("mariadbDataSource") DataSource mariadbDataSource,
       @Qualifier("mariadbSqlInitProperty") SqlInitProperties.SqlInitProperty mariadbSqlInitProperty) {
     return super.buildDataSourceInitializer(mariadbDataSource, mariadbSqlInitProperty.toClassPathResources());

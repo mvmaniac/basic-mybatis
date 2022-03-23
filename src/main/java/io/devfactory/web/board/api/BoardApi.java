@@ -1,12 +1,11 @@
 package io.devfactory.web.board.api;
 
+import io.devfactory.web.board.dto.BoardDto;
 import io.devfactory.web.board.service.BoardService;
 import io.devfactory.web.board.vo.BoardVo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,13 +17,32 @@ public class BoardApi {
   private final BoardService boardService;
 
   @GetMapping
-  public List<BoardVo> selectMembers() {
-    return boardService.selectBoards();
+  public ResponseEntity<List<BoardVo>> selectMembers() {
+    return ResponseEntity.ok(boardService.selectBoards());
   }
 
-  @GetMapping("/{id:[\\d]+}")
-  public BoardVo selectBoard(@PathVariable("id") long id) {
-    return boardService.selectBoard(id);
+  @GetMapping("/{seq:[\\d]+}")
+  public ResponseEntity<BoardVo> selectBoard(@PathVariable("seq") Long seq) {
+    return ResponseEntity.ok(boardService.selectBoard(seq));
+  }
+
+  @PostMapping
+  public ResponseEntity<Object> insertBoard(@RequestBody BoardDto boardDto) {
+    boardService.insertBoard(boardDto);
+    return ResponseEntity.ok().build();
+  }
+
+  @PutMapping("/{seq:[\\d]+}")
+  public ResponseEntity<Object> updateBoard(@PathVariable("seq") Long seq,
+      @RequestBody BoardDto boardDto) {
+    boardService.updateBoard(seq, boardDto);
+    return ResponseEntity.ok().build();
+  }
+
+  @DeleteMapping("/{seq:[\\d]+}")
+  public ResponseEntity<Object> updateBoard(@PathVariable("seq") Long seq) {
+    boardService.deleteBoard(seq);
+    return ResponseEntity.ok().build();
   }
 
 }

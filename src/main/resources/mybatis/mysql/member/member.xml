@@ -53,4 +53,34 @@
     where tm.seq = #{_parameter}
   </select>
 
+  <insert id="insertMember" parameterType="MemberDto">
+    insert into tb_member(
+      email
+      , name
+      , passwd
+      , login_count
+      , created_date
+    ) VALUES (
+      #{email}
+      , #{name}
+      , #{passwd}
+      , 0
+      , current_timestamp(6)
+    )
+  </insert>
+
+  <update id="updateMember">
+    update tb_member tm
+    set
+      tm.email = #{member.email}
+      , tm.name = #{member.name}
+      , tm.passwd = #{member.passwd}
+    where tm.seq = #{seq}
+  </update>
+
+  <delete id="deleteMember" parameterType="long">
+    delete from tb_member tm
+    where tm.seq = #{_parameter}
+  </delete>
+
 </mapper>
