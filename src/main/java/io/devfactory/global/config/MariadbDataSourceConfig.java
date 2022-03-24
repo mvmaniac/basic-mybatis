@@ -37,7 +37,7 @@ public class MariadbDataSourceConfig extends DataSourceConfigSupport {
   @Bean
   public MybatisProperties mariadbMybatisProperties() {
     MybatisProperties mybatisProperties = new MybatisProperties();
-    mybatisProperties.setConfiguration(obtainMybatisConfiguration());
+    mybatisProperties.setConfiguration(buildMybatisConfiguration());
     return mybatisProperties;
   }
 

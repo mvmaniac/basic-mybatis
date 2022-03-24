@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("squid:S112")
 @RequiredArgsConstructor
 @RequestMapping("/api/members")
 @RestController
@@ -40,6 +41,19 @@ public class MemberApi {
   @PostMapping
   public ResponseEntity<Object> insertMember(@RequestBody MemberDto memberDto) {
     memberService.insertMember(memberDto);
+    return ResponseEntity.ok().build();
+  }
+
+  @PostMapping("ex")
+  public ResponseEntity<Object> insertMemberWithException(
+      @RequestBody MemberDto memberDto) throws Exception {
+    memberService.insertMemberException(memberDto);
+    return ResponseEntity.ok().build();
+  }
+
+  @PostMapping("run-ex")
+  public ResponseEntity<Object> insertMemberWithRuntimeException(@RequestBody MemberDto memberDto) {
+    memberService.insertMemberRuntimeException(memberDto);
     return ResponseEntity.ok().build();
   }
 

@@ -40,7 +40,7 @@ public class MysqlDataSourceConfig extends DataSourceConfigSupport {
   @Bean
   public MybatisProperties mysqlMybatisProperties() {
     MybatisProperties mybatisProperties = new MybatisProperties();
-    mybatisProperties.setConfiguration(obtainMybatisConfiguration());
+    mybatisProperties.setConfiguration(buildMybatisConfiguration());
     return mybatisProperties;
   }
 

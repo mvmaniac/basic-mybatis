@@ -12,4 +12,8 @@ public class MemberDto {
   private final String name;
   private final String passwd;
 
+  public static MemberDto mockOf() {
+    return new MemberDto("mock@gamil.com", "mock", "1234");
+  }
+
 }

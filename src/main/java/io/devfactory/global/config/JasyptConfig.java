@@ -22,7 +22,7 @@ public class JasyptConfig {
     final var config = new SimpleStringPBEConfig();
 
     // 기본 설정 값들
-    config.setPassword(getAndVerifyPassword());
+    config.setPassword(obtainPasswordAfterValidate());
     config.setAlgorithm("PBEWithMD5AndDES");
     config.setKeyObtentionIterations("1000");
     config.setPoolSize("1");
@@ -35,7 +35,7 @@ public class JasyptConfig {
     return encryptor;
   }
 
-  private String getAndVerifyPassword() {
+  private String obtainPasswordAfterValidate() {
     final var password = environment.getProperty("jasypt.encryptor.password");
 
     if (isNull(password)) {

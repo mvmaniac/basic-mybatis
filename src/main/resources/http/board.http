@@ -8,6 +8,26 @@ Content-Type: application/json
   "writeId": "등록자"
 }
 
+### 게시판 글 저장 (Exception)
+POST http://localhost:8080/api/boards/ex
+Content-Type: application/json
+
+{
+  "title": "제목이다 ex",
+  "contents": "내용이다 ex",
+  "writeId": "등록자 ex"
+}
+
+### 게시판 글 저장 (RuntimeException)
+POST http://localhost:8080/api/boards/run-ex
+Content-Type: application/json
+
+{
+  "title": "제목이다 run-ex",
+  "contents": "내용이다 run-ex",
+  "writeId": "등록자 run-ex"
+}
+
 ### 게시판 글 전체 목록 조회
 GET http://localhost:8080/api/boards
 Content-Type: application/json

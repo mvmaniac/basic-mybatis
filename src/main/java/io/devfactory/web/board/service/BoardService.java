@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@SuppressWarnings("ClassCanBeRecord")
+@SuppressWarnings({"ClassCanBeRecord", "squid:S112"})
 @RequiredArgsConstructor
 @MariadbTx(readOnly = true)
 @Service
@@ -29,6 +29,17 @@ public class BoardService {
   @MariadbTx
   public void insertBoard(BoardDto boardDto) {
     boardMapper.insertBoard(boardDto);
+  }
+
+  @MariadbTx
+  public void insertBoardWithException(BoardDto boardDto) throws Exception {
+    boardMapper.insertBoard(boardDto);
+    throwException();
+  }
+
+  @MariadbTx
+  public void insertBoardWithRuntimeException(BoardDto boardDto) {
+    boardMapper.insertBoard(boardDto);
     throwRuntimeException();
   }
 
@@ -42,8 +53,12 @@ public class BoardService {
     boardMapper.deleteBoard(seq);
   }
 
+  private void throwException() throws Exception {
+    throw new Exception("mariadb 에러 발생");
+  }
+
   private void throwRuntimeException() {
-    throw new ServiceRuntimeException("mysql 런타임 에러 발생");
+    throw new ServiceRuntimeException("mariadb 런타임 에러 발생");
   }
 
 }

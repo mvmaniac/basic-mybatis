@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@SuppressWarnings("squid:S112")
 @RequiredArgsConstructor
 @RequestMapping("/api/boards")
 @RestController
@@ -29,6 +30,19 @@ public class BoardApi {
   @PostMapping
   public ResponseEntity<Object> insertBoard(@RequestBody BoardDto boardDto) {
     boardService.insertBoard(boardDto);
+    return ResponseEntity.ok().build();
+  }
+
+  @PostMapping("ex")
+  public ResponseEntity<Object> insertBoardWithException(
+      @RequestBody BoardDto boardDto) throws Exception {
+    boardService.insertBoardWithException(boardDto);
+    return ResponseEntity.ok().build();
+  }
+
+  @PostMapping("run-ex")
+  public ResponseEntity<Object> insertBoardWithRuntimeException(@RequestBody BoardDto boardDto) {
+    boardService.insertBoardWithRuntimeException(boardDto);
     return ResponseEntity.ok().build();
   }
 

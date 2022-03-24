@@ -19,7 +19,7 @@ public class DataSourceConfigSupport {
   @ConfigurationProperties(prefix = "mybatis.configuration")
   @Scope(value = "prototype")
   @Bean
-  public Configuration obtainMybatisConfiguration() {
+  public Configuration buildMybatisConfiguration() {
     return new Configuration();
   }
 

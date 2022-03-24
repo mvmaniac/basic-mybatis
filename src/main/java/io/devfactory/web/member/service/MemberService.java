@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-@SuppressWarnings("ClassCanBeRecord")
+@SuppressWarnings({"ClassCanBeRecord", "squid:S112"})
 @RequiredArgsConstructor
 @MysqlTx(readOnly = true)
 @Service
@@ -39,20 +39,32 @@ public class MemberService {
   @MysqlTx
   public void insertMember(MemberDto memberDto) {
     memberMapper.insertMember(memberDto);
-    throwRuntimeException();
   }
 
+  @MysqlTx
+  public void insertMemberException(MemberDto memberDto) throws Exception {
+    memberMapper.insertMember(memberDto);
+    throwException();
+  }
+
+  @MysqlTx
+  public void insertMemberRuntimeException(MemberDto memberDto) {
+    memberMapper.insertMember(memberDto);
+    throwRuntimeException();
+  }
 
   @MysqlTx
   public void updateMember(Long seq, MemberDto memberDto) {
     memberMapper.updateMember(seq, memberDto);
-    throwRuntimeException();
   }
 
   @MysqlTx
   public void deleteMember(Long seq) {
     memberMapper.deleteMember(seq);
-    throwRuntimeException();
+  }
+
+  private void throwException() throws Exception {
+    throw new Exception("mysql 에러 발생");
   }
 
   private void throwRuntimeException() {

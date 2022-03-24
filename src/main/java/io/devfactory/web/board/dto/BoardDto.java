@@ -12,4 +12,8 @@ public class BoardDto {
   private final String contents;
   private final String writeId;
 
+  public static BoardDto mockOf() {
+    return new BoardDto("mock 타이틀", "mock 내용", "mock@gmail.com");
+  }
+
 }
