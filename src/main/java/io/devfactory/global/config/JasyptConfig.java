@@ -23,12 +23,12 @@ public class JasyptConfig {
 
     // 기본 설정 값들
     config.setPassword(obtainPasswordAfterValidate());
-    config.setAlgorithm("PBEWithMD5AndDES");
+    config.setAlgorithm("PBEWITHHMACSHA512ANDAES_256");
     config.setKeyObtentionIterations("1000");
     config.setPoolSize("1");
     config.setProviderName("SunJCE");
     config.setSaltGeneratorClassName("org.jasypt.salt.RandomSaltGenerator");
-    config.setIvGeneratorClassName("org.jasypt.iv.NoIvGenerator");
+    config.setIvGeneratorClassName("org.jasypt.iv.RandomIvGenerator");
     config.setStringOutputType("base64");
 
     encryptor.setConfig(config);
