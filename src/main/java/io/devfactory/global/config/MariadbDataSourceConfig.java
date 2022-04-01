@@ -1,5 +1,6 @@
 package io.devfactory.global.config;
 
+import com.atomikos.jdbc.AtomikosDataSourceBean;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import io.devfactory.global.common.annotation.MariadbMapper;
@@ -9,6 +10,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.boot.autoconfigure.MybatisProperties;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,9 +30,17 @@ public class MariadbDataSourceConfig extends DataSourceConfigSupport {
     return new HikariConfig();
   }
 
+  @ConditionalOnProperty(value="spring.jta.enabled", havingValue = "false")
   @Bean
   public DataSource mariadbDataSource() {
     return new HikariDataSource(mariadbHikariConfig());
+  }
+
+  @ConditionalOnProperty(value="spring.jta.enabled", havingValue = "true")
+  @ConfigurationProperties(prefix = "spring.jta.atomikos.datasource.mariadb")
+  @Bean("mariadbDataSource")
+  public DataSource mariadbJtaDataSource() {
+    return new AtomikosDataSourceBean();
   }
 
   @ConfigurationProperties(prefix = "mybatis.mariadb")
@@ -55,12 +65,14 @@ public class MariadbDataSourceConfig extends DataSourceConfigSupport {
     return new SqlSessionTemplate(mariadbSqlSessionFactory);
   }
 
+  @ConditionalOnProperty(value="spring.jta.enabled", havingValue = "false")
   @Bean
   public PlatformTransactionManager mariadbTxManager(
       @Qualifier("mariadbDataSource") DataSource mariadbDataSource) {
     return new DataSourceTransactionManager(mariadbDataSource);
   }
 
+  @ConditionalOnProperty(value="spring.jta.enabled", havingValue = "false")
   @Bean
   public DataSourceInitializer mariadbDataSourceInitializer(
       @Qualifier("mariadbDataSource") DataSource mariadbDataSource,

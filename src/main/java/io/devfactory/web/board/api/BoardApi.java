@@ -34,15 +34,15 @@ public class BoardApi {
   }
 
   @PostMapping("ex")
-  public ResponseEntity<Object> insertBoardWithException(
+  public ResponseEntity<Object> insertBoardException(
       @RequestBody BoardDto boardDto) throws Exception {
-    boardService.insertBoardWithException(boardDto);
+    boardService.insertBoardException(boardDto);
     return ResponseEntity.ok().build();
   }
 
   @PostMapping("run-ex")
-  public ResponseEntity<Object> insertBoardWithRuntimeException(@RequestBody BoardDto boardDto) {
-    boardService.insertBoardWithRuntimeException(boardDto);
+  public ResponseEntity<Object> insertBoardRuntimeException(@RequestBody BoardDto boardDto) {
+    boardService.insertBoardRuntimeException(boardDto);
     return ResponseEntity.ok().build();
   }
 

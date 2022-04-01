@@ -4,6 +4,7 @@ import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -16,6 +17,7 @@ import org.springframework.transaction.interceptor.TransactionInterceptor;
 import java.util.List;
 import java.util.Properties;
 
+@ConditionalOnProperty(value = "app.aop.transaction.enabled", havingValue = "true")
 @Configuration
 public class TransactionAspectConfig {
 
@@ -59,7 +61,8 @@ public class TransactionAspectConfig {
   }
 
   // @Transactional 보다 우선순위가 높은듯...
-  private TransactionInterceptor buildTransactionAdvice(PlatformTransactionManager transactionManager) {
+  private TransactionInterceptor buildTransactionAdvice(
+      PlatformTransactionManager transactionManager) {
     final var rollbackRules = List.of(new RollbackRuleAttribute(Exception.class));
 
     final var readOnlyAttribute = new DefaultTransactionAttribute(TransactionDefinition.PROPAGATION_REQUIRED);

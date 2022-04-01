@@ -45,14 +45,14 @@ public class MemberApi {
   }
 
   @PostMapping("ex")
-  public ResponseEntity<Object> insertMemberWithException(
+  public ResponseEntity<Object> insertMemberException(
       @RequestBody MemberDto memberDto) throws Exception {
     memberService.insertMemberException(memberDto);
     return ResponseEntity.ok().build();
   }
 
   @PostMapping("run-ex")
-  public ResponseEntity<Object> insertMemberWithRuntimeException(@RequestBody MemberDto memberDto) {
+  public ResponseEntity<Object> insertMemberRuntimeException(@RequestBody MemberDto memberDto) {
     memberService.insertMemberRuntimeException(memberDto);
     return ResponseEntity.ok().build();
   }

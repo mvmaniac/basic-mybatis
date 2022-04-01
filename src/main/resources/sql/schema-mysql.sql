@@ -1,3 +1,4 @@
+drop table if exists tb_board cascade; -- test db를 다른 쪽에서도 쓰기 때문에 넣음
 drop table if exists tb_member cascade;
 
 create table tb_member

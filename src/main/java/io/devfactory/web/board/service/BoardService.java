@@ -1,6 +1,6 @@
 package io.devfactory.web.board.service;
 
-import io.devfactory.global.common.annotation.MariadbTx;
+import io.devfactory.global.common.annotation.MariadbTransaction;
 import io.devfactory.global.error.ServiceRuntimeException;
 import io.devfactory.web.board.dto.BoardDto;
 import io.devfactory.web.board.mapper.BoardMapper;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @SuppressWarnings({"ClassCanBeRecord", "squid:S112"})
 @RequiredArgsConstructor
-@MariadbTx(readOnly = true)
+@MariadbTransaction(readOnly = true)
 @Service
 public class BoardService {
 
@@ -26,29 +26,29 @@ public class BoardService {
     return boardMapper.selectBoard(seq).orElseGet(() -> BoardVo.builder().build());
   }
 
-  @MariadbTx
+  @MariadbTransaction
   public void insertBoard(BoardDto boardDto) {
     boardMapper.insertBoard(boardDto);
   }
 
-  @MariadbTx
-  public void insertBoardWithException(BoardDto boardDto) throws Exception {
+  @MariadbTransaction
+  public void insertBoardException(BoardDto boardDto) throws Exception {
     boardMapper.insertBoard(boardDto);
     throwException();
   }
 
-  @MariadbTx
-  public void insertBoardWithRuntimeException(BoardDto boardDto) {
+  @MariadbTransaction
+  public void insertBoardRuntimeException(BoardDto boardDto) {
     boardMapper.insertBoard(boardDto);
     throwRuntimeException();
   }
 
-  @MariadbTx
+  @MariadbTransaction
   public void updateBoard(Long seq, BoardDto boardDto) {
     boardMapper.updateBoard(seq, boardDto);
   }
 
-  @MariadbTx
+  @MariadbTransaction
   public void deleteBoard(Long seq) {
     boardMapper.deleteBoard(seq);
   }

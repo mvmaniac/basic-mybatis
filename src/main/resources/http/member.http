@@ -3,7 +3,7 @@ POST http://localhost:8080/api/members
 Content-Type: application/json
 
 {
-  "email": "dev1@gmail.com",
+  "email": "devNew@gmail.com",
   "name": "개발자1",
   "passwd": "1234"
 }
@@ -41,9 +41,9 @@ PUT http://localhost:8080/api/members/4
 Content-Type: application/json
 
 {
-  "email": "dev1@gmail.com",
-  "name": "개발자1수정",
-  "passwd": "1234수정"
+  "email": "devMod@gmail.com",
+  "name": "개발자1",
+  "passwd": "1234"
 }
 
 ### 회원 삭제

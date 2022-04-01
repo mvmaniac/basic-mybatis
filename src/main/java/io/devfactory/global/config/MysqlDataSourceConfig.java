@@ -1,5 +1,6 @@
 package io.devfactory.global.config;
 
+import com.atomikos.jdbc.AtomikosDataSourceBean;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import io.devfactory.global.common.annotation.MysqlMapper;
@@ -9,6 +10,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.boot.autoconfigure.MybatisProperties;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,10 +31,18 @@ public class MysqlDataSourceConfig extends DataSourceConfigSupport {
     return new HikariConfig();
   }
 
+  @ConditionalOnProperty(value="spring.jta.enabled", havingValue = "false")
   @Primary
   @Bean
   public DataSource mysqlDataSource() {
     return new HikariDataSource(mysqlHikariConfig());
+  }
+
+  @ConditionalOnProperty(value="spring.jta.enabled", havingValue = "true")
+  @ConfigurationProperties(prefix = "spring.jta.atomikos.datasource.mysql")
+  @Bean("mysqlDataSource")
+  public DataSource mysqlJtaDataSource() {
+    return new AtomikosDataSourceBean();
   }
 
   @Primary
@@ -60,6 +70,7 @@ public class MysqlDataSourceConfig extends DataSourceConfigSupport {
     return new SqlSessionTemplate(mysqlSqlSessionFactory);
   }
 
+  @ConditionalOnProperty(value="spring.jta.enabled", havingValue = "false")
   @Primary
   @Bean
   public PlatformTransactionManager mySqlTxManager(
@@ -67,6 +78,7 @@ public class MysqlDataSourceConfig extends DataSourceConfigSupport {
     return new DataSourceTransactionManager(mysqlDataSource);
   }
 
+  @ConditionalOnProperty(value="spring.jta.enabled", havingValue = "false")
   @Bean
   public DataSourceInitializer mysqlDataSourceInitializer(
       @Qualifier("mysqlDataSource") DataSource mysqlDataSource,

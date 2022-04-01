@@ -4,5 +4,60 @@
       "name": "spring.profiles.group.default",
       "type": "java.lang.String",
       "description": "Description for spring.profiles.group.default."
+    },
+    {
+      "name": "app.aop.transaction.enabled",
+      "type": "java.lang.String",
+      "description": "Description for app.aop.transaction.enabled."
+    },
+    {
+      "name": "spring.jta.atomikos.datasource.mysql.unique-resource-name",
+      "type": "java.lang.String",
+      "description": "Description for spring.jta.atomikos.datasource.mysql.unique-resource-name."
+    },
+    {
+      "name": "spring.jta.atomikos.datasource.mysql.xa-data-source-class-name",
+      "type": "java.lang.String",
+      "description": "Description for spring.jta.atomikos.datasource.mysql.xa-data-source-class-name."
+    },
+    {
+      "name": "spring.jta.atomikos.datasource.mysql.xa-properties.url",
+      "type": "java.lang.String",
+      "description": "Description for spring.jta.atomikos.datasource.mysql.xa-properties.url."
+    },
+    {
+      "name": "spring.jta.atomikos.datasource.mysql.xa-properties.user",
+      "type": "java.lang.String",
+      "description": "Description for spring.jta.atomikos.datasource.mysql.xa-properties.user."
+    },
+    {
+      "name": "spring.jta.atomikos.datasource.mysql.xa-properties.password",
+      "type": "java.lang.String",
+      "description": "Description for spring.jta.atomikos.datasource.mysql.xa-properties.password."
+    },
+    {
+      "name": "spring.jta.atomikos.datasource.mariadb.unique-resource-name",
+      "type": "java.lang.String",
+      "description": "Description for spring.jta.atomikos.datasource.mariadb.unique-resource-name."
+    },
+    {
+      "name": "spring.jta.atomikos.datasource.mariadb.xa-data-source-class-name",
+      "type": "java.lang.String",
+      "description": "Description for spring.jta.atomikos.datasource.mariadb.xa-data-source-class-name."
+    },
+    {
+      "name": "spring.jta.atomikos.datasource.mariadb.xa-properties.url",
+      "type": "java.lang.String",
+      "description": "Description for spring.jta.atomikos.datasource.mariadb.xa-properties.url."
+    },
+    {
+      "name": "spring.jta.atomikos.datasource.mariadb.xa-properties.user",
+      "type": "java.lang.String",
+      "description": "Description for spring.jta.atomikos.datasource.mariadb.xa-properties.user."
+    },
+    {
+      "name": "spring.jta.atomikos.datasource.mariadb.xa-properties.password",
+      "type": "java.lang.String",
+      "description": "Description for spring.jta.atomikos.datasource.mariadb.xa-properties.password."
     }
   ] }

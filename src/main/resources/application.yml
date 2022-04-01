@@ -29,3 +29,6 @@ jasypt:
 logging:
   level:
     io.devfactory: debug
+
+app:
+  aop.transaction.enabled: false

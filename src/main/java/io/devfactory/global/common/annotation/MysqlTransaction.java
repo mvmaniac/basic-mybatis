@@ -8,10 +8,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+//@Transactional // JTA 테스트 시 사용
 @Transactional(transactionManager = "mySqlTxManager")
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface MysqlTx {
+public @interface MysqlTransaction {
 
   String value() default "";
 

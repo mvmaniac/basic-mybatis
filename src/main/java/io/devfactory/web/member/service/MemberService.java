@@ -1,6 +1,6 @@
 package io.devfactory.web.member.service;
 
-import io.devfactory.global.common.annotation.MysqlTx;
+import io.devfactory.global.common.annotation.MysqlTransaction;
 import io.devfactory.global.error.ServiceRuntimeException;
 import io.devfactory.web.member.dto.MemberDto;
 import io.devfactory.web.member.mapper.MemberMapper;
@@ -14,7 +14,7 @@ import java.util.Map;
 
 @SuppressWarnings({"ClassCanBeRecord", "squid:S112"})
 @RequiredArgsConstructor
-@MysqlTx(readOnly = true)
+@MysqlTransaction(readOnly = true)
 @Service
 public class MemberService {
 
@@ -36,29 +36,29 @@ public class MemberService {
     return memberMapper.selectMemberToMap(seq).orElseGet(Collections::emptyMap);
   }
 
-  @MysqlTx
+  @MysqlTransaction
   public void insertMember(MemberDto memberDto) {
     memberMapper.insertMember(memberDto);
   }
 
-  @MysqlTx
+  @MysqlTransaction
   public void insertMemberException(MemberDto memberDto) throws Exception {
     memberMapper.insertMember(memberDto);
     throwException();
   }
 
-  @MysqlTx
+  @MysqlTransaction
   public void insertMemberRuntimeException(MemberDto memberDto) {
     memberMapper.insertMember(memberDto);
     throwRuntimeException();
   }
 
-  @MysqlTx
+  @MysqlTransaction
   public void updateMember(Long seq, MemberDto memberDto) {
     memberMapper.updateMember(seq, memberDto);
   }
 
-  @MysqlTx
+  @MysqlTransaction
   public void deleteMember(Long seq) {
     memberMapper.deleteMember(seq);
   }
