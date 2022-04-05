@@ -1,5 +1,6 @@
 package io.devfactory.web.board.dto;
 
+import io.devfactory.web.board.vo.BoardVo;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.type.Alias;
 
@@ -12,8 +13,12 @@ public class BoardDto {
   private final String contents;
   private final String writeId;
 
-  public static BoardDto mockOf() {
-    return new BoardDto("mock 타이틀", "mock 내용", "mock@gmail.com");
+  public static BoardVo mockOf() {
+    return BoardVo.builder().title("mock 타이틀").contents("mock 내용").writeId("mock@gmail.com").build();
+  }
+
+  public BoardVo toVo() {
+    return BoardVo.builder().title(title).contents(contents).writeId(writeId).build();
   }
 
 }

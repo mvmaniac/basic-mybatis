@@ -1,5 +1,6 @@
 package io.devfactory.web.member.dto;
 
+import io.devfactory.web.member.vo.MemberVo;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.type.Alias;
 
@@ -12,8 +13,12 @@ public class MemberDto {
   private final String name;
   private final String passwd;
 
-  public static MemberDto mockOf() {
-    return new MemberDto("mock@gamil.com", "mock", "1234");
+  public static MemberVo mockOf() {
+    return MemberVo.builder().email("mock@gamil.com").name("mock").passwd("1234").build();
+  }
+
+  public MemberVo toVo() {
+    return MemberVo.builder().email(email).name(name).passwd(passwd).build();
   }
 
 }

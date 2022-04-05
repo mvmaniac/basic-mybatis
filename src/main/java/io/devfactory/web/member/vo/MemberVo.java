@@ -1,5 +1,6 @@
 package io.devfactory.web.member.vo;
 
+import io.devfactory.global.common.annotation.CreatedDate;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,8 @@ public class MemberVo {
   private String email;
   private int loginCount;
   private LocalDateTime lastLoginAt;
+
+  @CreatedDate(updatable = false)
   private LocalDateTime createdDate;
 
   @Builder

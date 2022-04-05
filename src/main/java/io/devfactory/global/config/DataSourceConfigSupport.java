@@ -1,10 +1,12 @@
 package io.devfactory.global.config;
 
+import io.devfactory.global.common.interceptor.MybatisAuditInterceptor;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.boot.autoconfigure.MybatisProperties;
 import org.mybatis.spring.boot.autoconfigure.SpringBootVFS;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
@@ -15,6 +17,9 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import javax.sql.DataSource;
 
 public class DataSourceConfigSupport {
+
+  @Value("${app.mybatis.interceptor.enabled}")
+  private boolean isMybatisInterceptorEnable;
 
   @ConfigurationProperties(prefix = "mybatis.configuration")
   @Scope(value = "prototype")
@@ -34,6 +39,10 @@ public class DataSourceConfigSupport {
     factory.setMapperLocations(mybatisProperties.resolveMapperLocations());
     factory.setTypeAliasesPackage(mybatisProperties.getTypeAliasesPackage());
     factory.setTypeHandlersPackage(mybatisProperties.getTypeHandlersPackage());
+
+    if (this.isMybatisInterceptorEnable) {
+      factory.setPlugins(new MybatisAuditInterceptor());
+    }
 
     return factory.getObject();
   }

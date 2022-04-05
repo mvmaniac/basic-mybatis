@@ -29,27 +29,27 @@ public class BoardApi {
 
   @PostMapping
   public ResponseEntity<Object> insertBoard(@RequestBody BoardDto boardDto) {
-    boardService.insertBoard(boardDto);
+    boardService.insertBoard(boardDto.toVo());
     return ResponseEntity.ok().build();
   }
 
   @PostMapping("ex")
   public ResponseEntity<Object> insertBoardException(
       @RequestBody BoardDto boardDto) throws Exception {
-    boardService.insertBoardException(boardDto);
+    boardService.insertBoardException(boardDto.toVo());
     return ResponseEntity.ok().build();
   }
 
   @PostMapping("run-ex")
   public ResponseEntity<Object> insertBoardRuntimeException(@RequestBody BoardDto boardDto) {
-    boardService.insertBoardRuntimeException(boardDto);
+    boardService.insertBoardRuntimeException(boardDto.toVo());
     return ResponseEntity.ok().build();
   }
 
   @PutMapping("/{seq:[\\d]+}")
   public ResponseEntity<Object> updateBoard(@PathVariable("seq") Long seq,
       @RequestBody BoardDto boardDto) {
-    boardService.updateBoard(seq, boardDto);
+    boardService.updateBoard(seq, boardDto.toVo());
     return ResponseEntity.ok().build();
   }
 

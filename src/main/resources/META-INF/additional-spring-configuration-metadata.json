@@ -59,5 +59,10 @@
       "name": "spring.jta.atomikos.datasource.mariadb.xa-properties.password",
       "type": "java.lang.String",
       "description": "Description for spring.jta.atomikos.datasource.mariadb.xa-properties.password."
+    },
+    {
+      "name": "app.mybatis.interceptor.enabled",
+      "type": "java.lang.String",
+      "description": "Description for app.mybatis.interceptor.enabled."
     }
   ] }

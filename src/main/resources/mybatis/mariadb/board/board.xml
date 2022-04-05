@@ -7,7 +7,7 @@
     select
       tb.seq
       , tb.title
-      , tb.content
+      , tb.contents
       , tb.write_id
       , tb.created_date
     from tb_board tb
@@ -17,24 +17,30 @@
     select
       tb.seq
       , tb.title
-      , tb.content
+      , tb.contents
       , tb.write_id
       , tb.created_date
     from tb_board tb
     where tb.seq = #{_parameter}
   </select>
 
-  <insert id="insertBoard" parameterType="BoardDto">
+  <insert id="insertBoard" parameterType="BoardVo">
     insert into tb_board(
       title
-      , content
+      , contents
       , write_id
+      , created_id
       , created_date
+      , updated_id
+      , updated_date
     ) VALUES (
       #{title}
       , #{contents}
       , #{writeId}
-      , current_timestamp(6)
+      , #{createdId}
+      , #{createdDate}
+      , #{updatedId}
+      , #{updatedDate}
     )
   </insert>
 
@@ -42,7 +48,9 @@
     update tb_board tb
     set
       tb.title = #{board.title}
-      , tb.content = #{board.contents}
+      , tb.contents = #{board.contents}
+      , tb.updated_id = #{board.updatedId}
+      , tb.updated_date = #{board.updatedDate}
     where tb.seq = #{seq}
   </update>
 

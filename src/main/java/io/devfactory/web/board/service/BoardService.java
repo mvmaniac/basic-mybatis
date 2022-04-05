@@ -2,7 +2,6 @@ package io.devfactory.web.board.service;
 
 import io.devfactory.global.common.annotation.MariadbTransaction;
 import io.devfactory.global.error.ServiceRuntimeException;
-import io.devfactory.web.board.dto.BoardDto;
 import io.devfactory.web.board.mapper.BoardMapper;
 import io.devfactory.web.board.vo.BoardVo;
 import lombok.RequiredArgsConstructor;
@@ -27,25 +26,25 @@ public class BoardService {
   }
 
   @MariadbTransaction
-  public void insertBoard(BoardDto boardDto) {
-    boardMapper.insertBoard(boardDto);
+  public void insertBoard(BoardVo boardVo) {
+    boardMapper.insertBoard(boardVo);
   }
 
   @MariadbTransaction
-  public void insertBoardException(BoardDto boardDto) throws Exception {
-    boardMapper.insertBoard(boardDto);
+  public void insertBoardException(BoardVo boardVo) throws Exception {
+    boardMapper.insertBoard(boardVo);
     throwException();
   }
 
   @MariadbTransaction
-  public void insertBoardRuntimeException(BoardDto boardDto) {
-    boardMapper.insertBoard(boardDto);
+  public void insertBoardRuntimeException(BoardVo boardVo) {
+    boardMapper.insertBoard(boardVo);
     throwRuntimeException();
   }
 
   @MariadbTransaction
-  public void updateBoard(Long seq, BoardDto boardDto) {
-    boardMapper.updateBoard(seq, boardDto);
+  public void updateBoard(Long seq, BoardVo boardVo) {
+    boardMapper.updateBoard(seq, boardVo);
   }
 
   @MariadbTransaction

@@ -53,7 +53,7 @@
     where tm.seq = #{_parameter}
   </select>
 
-  <insert id="insertMember" parameterType="MemberDto">
+  <insert id="insertMember" parameterType="MemberVo">
     insert into tb_member(
       email
       , name
@@ -65,7 +65,7 @@
       , #{name}
       , #{passwd}
       , 0
-      , current_timestamp(6)
+      , #{createdDate}
     )
   </insert>
 

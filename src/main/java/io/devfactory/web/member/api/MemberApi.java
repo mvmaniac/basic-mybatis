@@ -40,27 +40,27 @@ public class MemberApi {
 
   @PostMapping
   public ResponseEntity<Object> insertMember(@RequestBody MemberDto memberDto) {
-    memberService.insertMember(memberDto);
+    memberService.insertMember(memberDto.toVo());
     return ResponseEntity.ok().build();
   }
 
   @PostMapping("ex")
   public ResponseEntity<Object> insertMemberException(
       @RequestBody MemberDto memberDto) throws Exception {
-    memberService.insertMemberException(memberDto);
+    memberService.insertMemberException(memberDto.toVo());
     return ResponseEntity.ok().build();
   }
 
   @PostMapping("run-ex")
   public ResponseEntity<Object> insertMemberRuntimeException(@RequestBody MemberDto memberDto) {
-    memberService.insertMemberRuntimeException(memberDto);
+    memberService.insertMemberRuntimeException(memberDto.toVo());
     return ResponseEntity.ok().build();
   }
 
   @PutMapping("/{seq:[\\d]+}")
   public ResponseEntity<Object> updateMember(@PathVariable("seq") Long seq,
       @RequestBody MemberDto memberDto) {
-    memberService.updateMember(seq, memberDto);
+    memberService.updateMember(seq, memberDto.toVo());
     return ResponseEntity.ok().build();
   }
 

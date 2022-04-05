@@ -2,7 +2,6 @@ package io.devfactory.web.member.service;
 
 import io.devfactory.global.common.annotation.MysqlTransaction;
 import io.devfactory.global.error.ServiceRuntimeException;
-import io.devfactory.web.member.dto.MemberDto;
 import io.devfactory.web.member.mapper.MemberMapper;
 import io.devfactory.web.member.vo.MemberVo;
 import lombok.RequiredArgsConstructor;
@@ -37,25 +36,25 @@ public class MemberService {
   }
 
   @MysqlTransaction
-  public void insertMember(MemberDto memberDto) {
-    memberMapper.insertMember(memberDto);
+  public void insertMember(MemberVo memberVo) {
+    memberMapper.insertMember(memberVo);
   }
 
   @MysqlTransaction
-  public void insertMemberException(MemberDto memberDto) throws Exception {
-    memberMapper.insertMember(memberDto);
+  public void insertMemberException(MemberVo memberVo) throws Exception {
+    memberMapper.insertMember(memberVo);
     throwException();
   }
 
   @MysqlTransaction
-  public void insertMemberRuntimeException(MemberDto memberDto) {
-    memberMapper.insertMember(memberDto);
+  public void insertMemberRuntimeException(MemberVo memberVo) {
+    memberMapper.insertMember(memberVo);
     throwRuntimeException();
   }
 
   @MysqlTransaction
-  public void updateMember(Long seq, MemberDto memberDto) {
-    memberMapper.updateMember(seq, memberDto);
+  public void updateMember(Long seq, MemberVo memberVo) {
+    memberMapper.updateMember(seq, memberVo);
   }
 
   @MysqlTransaction
