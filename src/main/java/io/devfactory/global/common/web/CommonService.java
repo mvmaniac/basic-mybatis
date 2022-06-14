@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@SuppressWarnings("ClassCanBeRecord")
 @RequiredArgsConstructor
 @Transactional // 별도의 설정을 하지 않으면 @Primary로 설정된 DataSource의 트랜잭션을 사용함
 @Service

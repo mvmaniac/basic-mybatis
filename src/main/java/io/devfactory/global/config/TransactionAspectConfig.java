@@ -40,7 +40,7 @@ public class TransactionAspectConfig {
 
   @Bean
   public TransactionInterceptor mysqlTxAdvice() {
-    return buildTransactionAdvice(mySqlTxManager);
+    return buildTransactionAdvice(this.mySqlTxManager);
   }
 
   @Bean
@@ -50,7 +50,7 @@ public class TransactionAspectConfig {
 
   @Bean
   public TransactionInterceptor mariadbTxAdvice() {
-    return buildTransactionAdvice(mariadbTxManager);
+    return buildTransactionAdvice(this.mariadbTxManager);
   }
 
   // mySqlTxManager, mariadbTxManager에 맞게 설정 필요함...현재는 그냥 전체 다...

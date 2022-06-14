@@ -23,7 +23,7 @@ public class MemberApi {
     return ResponseEntity.ok(memberService.selectMembers());
   }
 
-  @GetMapping("/{seq:[\\d]+}")
+  @GetMapping("/{seq:\\d+}")
   public ResponseEntity<MemberVo> selectMember(@PathVariable("seq") Long seq) {
     return ResponseEntity.ok(memberService.selectMember(seq));
   }
@@ -33,7 +33,7 @@ public class MemberApi {
     return ResponseEntity.ok(memberService.selectMembersToMap());
   }
 
-  @GetMapping("/map/{seq:[\\d]+}")
+  @GetMapping("/map/{seq:\\d+}")
   public ResponseEntity<Map<String, Object>> selectMemberToMap(@PathVariable("seq") Long seq) {
     return ResponseEntity.ok(memberService.selectMemberToMap(seq));
   }
@@ -57,14 +57,14 @@ public class MemberApi {
     return ResponseEntity.ok().build();
   }
 
-  @PutMapping("/{seq:[\\d]+}")
+  @PutMapping("/{seq:\\d+}")
   public ResponseEntity<Object> updateMember(@PathVariable("seq") Long seq,
       @RequestBody MemberDto memberDto) {
     memberService.updateMember(seq, memberDto.toVo());
     return ResponseEntity.ok().build();
   }
 
-  @DeleteMapping("/{seq:[\\d]+}")
+  @DeleteMapping("/{seq:\\d+}")
   public ResponseEntity<Object> updateBoard(@PathVariable("seq") Long seq) {
     memberService.deleteMember(seq);
     return ResponseEntity.ok().build();

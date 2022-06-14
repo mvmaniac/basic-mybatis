@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-@SuppressWarnings({"ClassCanBeRecord", "squid:S112"})
+@SuppressWarnings({"squid:S112"})
 @RequiredArgsConstructor
 @MysqlTransaction(readOnly = true)
 @Service

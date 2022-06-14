@@ -14,7 +14,6 @@ import org.springframework.test.context.TestPropertySource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.context.TestConstructor.AutowireMode.ALL;
 
-@SuppressWarnings("ClassCanBeRecord")
 @Slf4j
 @RequiredArgsConstructor
 @TestPropertySource(properties = {"jasypt.encryptor.password=dbgmltlr"})

@@ -4,7 +4,6 @@ import io.devfactory.web.member.vo.MemberVo;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.type.Alias;
 
-@SuppressWarnings("ClassCanBeRecord")
 @Alias("MemberDto")
 @RequiredArgsConstructor
 public class MemberDto {

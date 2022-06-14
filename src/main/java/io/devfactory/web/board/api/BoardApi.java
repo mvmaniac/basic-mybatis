@@ -46,14 +46,14 @@ public class BoardApi {
     return ResponseEntity.ok().build();
   }
 
-  @PutMapping("/{seq:[\\d]+}")
+  @PutMapping("/{seq:\\d+}")
   public ResponseEntity<Object> updateBoard(@PathVariable("seq") Long seq,
       @RequestBody BoardDto boardDto) {
     boardService.updateBoard(seq, boardDto.toVo());
     return ResponseEntity.ok().build();
   }
 
-  @DeleteMapping("/{seq:[\\d]+}")
+  @DeleteMapping("/{seq:\\d+}")
   public ResponseEntity<Object> updateBoard(@PathVariable("seq") Long seq) {
     boardService.deleteBoard(seq);
     return ResponseEntity.ok().build();

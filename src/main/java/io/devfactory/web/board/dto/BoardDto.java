@@ -4,7 +4,6 @@ import io.devfactory.web.board.vo.BoardVo;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.type.Alias;
 
-@SuppressWarnings("ClassCanBeRecord")
 @Alias("BoardDto")
 @RequiredArgsConstructor
 public class BoardDto {

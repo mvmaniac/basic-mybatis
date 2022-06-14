@@ -9,8 +9,11 @@ spring:
         username: ENC[Fu9sG8qRC8kIweIS4Lhk2G69ZWTqXt+GyAhdzAorwE7uwXk2iUEfOqZtdnKcp/4+]
         password: ENC[8Kywn+mJcRbX7CFBlRnUsJes74ycM/3VDezaCd4elPruJK99yYwJvF9FC+ZSeLSE]
         pool-name: MYSQL_DB
-        minimum-idle: 1
-        maximum-pool-size: 5
+        idle-timeout: 10000 # 기본값 600000 (10분)
+        connection-timeout: 30000 # 기본값 30000 (30초)
+        minimum-idle: 5 # 기본값 maximum-pool-size와 같음
+        maximum-pool-size: 10 # 기본값 10
+        max-lifetime: 1800000 # 기본값 1800000 (30분)
       mariadb:
         driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
         # 기존 jdbc-url에서 쿼리 Log를 확인하려면 해당 옵선을 추가하면 됨
@@ -19,8 +22,11 @@ spring:
         username: ENC[Fu9sG8qRC8kIweIS4Lhk2G69ZWTqXt+GyAhdzAorwE7uwXk2iUEfOqZtdnKcp/4+]
         password: ENC[8Kywn+mJcRbX7CFBlRnUsJes74ycM/3VDezaCd4elPruJK99yYwJvF9FC+ZSeLSE]
         pool-name: MARIADB_DB
-        minimum-idle: 1
-        maximum-pool-size: 5
+        idle-timeout: 10000 # 기본값 600000 (10분)
+        connection-timeout: 30000 # 기본값 30000 (30초)
+        minimum-idle: 5 # 기본값 maximum-pool-size와 같음
+        maximum-pool-size: 10 # 기본값 10
+        max-lifetime: 1800000 # 기본값 1800000 (30분)
 
   jta:
     enabled: false
