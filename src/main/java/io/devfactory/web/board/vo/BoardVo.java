@@ -1,9 +1,6 @@
 package io.devfactory.web.board.vo;
 
-import io.devfactory.global.common.annotation.CreatedBy;
-import io.devfactory.global.common.annotation.CreatedDate;
-import io.devfactory.global.common.annotation.LastModifiedBy;
-import io.devfactory.global.common.annotation.LastModifiedDate;
+import io.devfactory.global.common.annotation.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +11,7 @@ import java.util.StringJoiner;
 
 import static lombok.AccessLevel.PROTECTED;
 
+@Auditable
 @Alias("BoardVo")
 @NoArgsConstructor(access = PROTECTED)
 @Getter

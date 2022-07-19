@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<!--suppress SqlNoDataSourceInspection, SqlDialectInspection -->
 <mapper namespace="io.devfactory.web.board.mapper.BoardMapper">
 
   <select id="selectBoards" resultType="BoardVo">
@@ -9,7 +10,10 @@
       , tb.title
       , tb.contents
       , tb.write_id
+      , tb.created_id
       , tb.created_date
+      , tb.updated_id
+      , tb.updated_date
     from tb_board tb
   </select>
 
@@ -19,7 +23,10 @@
       , tb.title
       , tb.contents
       , tb.write_id
+      , tb.created_id
       , tb.created_date
+      , tb.updated_id
+      , tb.updated_date
     from tb_board tb
     where tb.seq = #{_parameter}
   </select>

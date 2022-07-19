@@ -32,4 +32,6 @@ logging:
 
 app:
   aop.transaction.enabled: false
-  mybatis.interceptor.enabled: true
+  mybatis:
+    aop.enabled: true
+    interceptor.enabled: false

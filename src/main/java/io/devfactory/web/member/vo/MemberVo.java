@@ -1,5 +1,6 @@
 package io.devfactory.web.member.vo;
 
+import io.devfactory.global.common.annotation.Auditable;
 import io.devfactory.global.common.annotation.CreatedDate;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,6 +12,7 @@ import java.util.StringJoiner;
 
 import static lombok.AccessLevel.PROTECTED;
 
+@Auditable
 @Alias("MemberVo")
 @NoArgsConstructor(access = PROTECTED)
 @Getter

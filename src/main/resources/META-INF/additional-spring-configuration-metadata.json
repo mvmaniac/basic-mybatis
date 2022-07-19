@@ -64,5 +64,10 @@
       "name": "app.mybatis.interceptor.enabled",
       "type": "java.lang.String",
       "description": "Description for app.mybatis.interceptor.enabled."
+    },
+    {
+      "name": "app.mybatis.aop.enabled",
+      "type": "java.lang.String",
+      "description": "Description for app.mybatis.aop.enabled."
     }
   ] }
