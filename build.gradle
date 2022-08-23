@@ -1,13 +1,13 @@
 plugins {
-  id 'org.springframework.boot' version '2.6.4'
-  id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+  id 'org.springframework.boot' version '2.7.5'
+  id 'io.spring.dependency-management' version '1.0.15.RELEASE'
   id 'java'
 }
 
 group = 'io.devfactory'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
+sourceCompatibility = JavaVersion.VERSION_18
+targetCompatibility = JavaVersion.VERSION_18
 
 configurations {
   compileOnly {
@@ -22,6 +22,8 @@ repositories {
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-web'
   implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+  implementation 'org.springframework.boot:spring-boot-starter-aop'
+  implementation 'org.springframework.boot:spring-boot-starter-jta-atomikos'
 
   implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
   implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
@@ -38,7 +40,9 @@ dependencies {
   testCompileOnly 'org.projectlombok:lombok'
   testAnnotationProcessor 'org.projectlombok:lombok'
 
+  testImplementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.2.2'
 }
 
 tasks.named('test') {
