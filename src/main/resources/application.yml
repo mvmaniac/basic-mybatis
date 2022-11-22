@@ -13,11 +13,13 @@ mybatis:
 
   mysql:
     mapper-locations: classpath:mybatis/mysql/**/*.xml
-    type-aliases-package: io.devfactory.web.**.vo, io.devfactory.web.**.dto
+    type-aliases-package: io.devfactory.web.**.vo, io.devfactory.web.**.dto, io.devfactory.global.common.typehandler
+    type-handlers-package: io.devfactory.global.common.typehandler
 
   mariadb:
     mapper-locations: classpath:mybatis/mariadb/**/*.xml
-    type-aliases-package: io.devfactory.web.**.vo, io.devfactory.web.**.dto
+    type-aliases-package: io.devfactory.web.**.vo, io.devfactory.web.**.dto, io.devfactory.global.common.typehandler
+    type-handlers-package: io.devfactory.global.common.typehandler
 
 jasypt:
   encryptor:

@@ -4,7 +4,18 @@
 <!--suppress SqlNoDataSourceInspection, SqlDialectInspection -->
 <mapper namespace="io.devfactory.web.member.mapper.MemberMapper">
 
-  <select id="selectMembers" resultType="MemberVo">
+  <!-- TODO: typeHandler를 사용하려면 resultMap으로 밖에 없는 것 인가... -->
+  <resultMap type="MemberVo" id="MemberMap">
+    <result column="seq" property="seq" />
+    <result column="email" property="email" />
+    <result column="name" property="name" />
+    <result column="passwd" property="passwd" typeHandler="MybatisTypeHandler" />
+    <result column="login_count" property="loginCount" />
+    <result column="last_login_at" property="lastLoginAt" />
+    <result column="created_date" property="createdDate" />
+  </resultMap>
+
+  <select id="selectMembers" resultMap="MemberMap">
     select
       tm.seq
       , tm.email
@@ -61,10 +72,10 @@
       , passwd
       , login_count
       , created_date
-    ) VALUES (
+    ) values (
       #{email}
       , #{name}
-      , #{passwd}
+      , #{passwd, typeHandler = MybatisTypeHandler}
       , 0
       , #{createdDate}
     )
@@ -75,7 +86,7 @@
     set
       tm.email = #{member.email}
       , tm.name = #{member.name}
-      , tm.passwd = #{member.passwd}
+      , tm.passwd = #{member.passwd, typeHandler = MybatisTypeHandler}
     where tm.seq = #{seq}
   </update>
 
