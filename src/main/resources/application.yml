@@ -6,7 +6,9 @@ spring:
 mybatis:
   configuration:
     jdbc-type-for-null: varchar
-    map-underscore-to-camel-case: true # dto나 vo 사용시 camelcase로 맵핑
+    # dto나 vo 사용시 camelcase로 맵핑
+    # 생성자로 맵핑 할 경우 설정할 필요 없지만, 생성자 순서대로 select를 해야 함
+    map-underscore-to-camel-case: true 
     call-setters-on-nulls: true # map 사용시 null 컬럼도 리턴함
     multiple-result-sets-enabled: true
     default-fetch-size: 500

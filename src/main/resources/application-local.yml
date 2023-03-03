@@ -5,7 +5,7 @@ spring:
         driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
         # 기존 jdbc-url에서 쿼리 수행 시간을 확인하려면 해당 옵선을 추가하면 됨
         # &profileSql=true
-        jdbc-url: jdbc:log4jdbc:mysql://localhost:3306/test?useSSL=false&&allowMultiQueries=true&rewriteBatchedStatements=true&profileSql=true
+        jdbc-url: jdbc:log4jdbc:mysql://localhost:3306/test?allowMultiQueries=true&rewriteBatchedStatements=true&profileSql=true
         username: ENC[Fu9sG8qRC8kIweIS4Lhk2G69ZWTqXt+GyAhdzAorwE7uwXk2iUEfOqZtdnKcp/4+]
         password: ENC[8Kywn+mJcRbX7CFBlRnUsJes74ycM/3VDezaCd4elPruJK99yYwJvF9FC+ZSeLSE]
         pool-name: MYSQL_DB
@@ -36,7 +36,7 @@ spring:
           unique-resource-name: mysqlDataSource
           xa-data-source-class-name: com.mysql.cj.jdbc.MysqlXADataSource
           xa-properties:
-            url: jdbc:mysql://localhost:3306/test?useSSL=false&&allowMultiQueries=true&rewriteBatchedStatements=true&profileSql=true
+            url: jdbc:mysql://localhost:3306/test?allowMultiQueries=true&rewriteBatchedStatements=true&profileSql=true
             user: ENC[Fu9sG8qRC8kIweIS4Lhk2G69ZWTqXt+GyAhdzAorwE7uwXk2iUEfOqZtdnKcp/4+]
             password: ENC[8Kywn+mJcRbX7CFBlRnUsJes74ycM/3VDezaCd4elPruJK99yYwJvF9FC+ZSeLSE]
         mariadb:
