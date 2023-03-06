@@ -1,13 +1,13 @@
 plugins {
-  id 'org.springframework.boot' version '2.7.5'
-  id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+  id 'org.springframework.boot' version '3.1.0'
+  id 'io.spring.dependency-management' version '1.1.0'
   id 'java'
 }
 
 group = 'io.devfactory'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = JavaVersion.VERSION_18
-targetCompatibility = JavaVersion.VERSION_18
+sourceCompatibility = JavaVersion.VERSION_19
+targetCompatibility = JavaVersion.VERSION_19
 
 configurations {
   compileOnly {
@@ -23,13 +23,13 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-web'
   implementation 'org.springframework.boot:spring-boot-starter-jdbc'
   implementation 'org.springframework.boot:spring-boot-starter-aop'
-  implementation 'org.springframework.boot:spring-boot-starter-jta-atomikos'
+  implementation 'org.springframework.boot:spring-boot-starter-jta-atomikos:2.7.9'
 
-  implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
-  implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
+  implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.1'
+  implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5'
   implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
 
-  runtimeOnly 'mysql:mysql-connector-java'
+  runtimeOnly 'com.mysql:mysql-connector-j'
   runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 
   annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
@@ -40,11 +40,15 @@ dependencies {
   testCompileOnly 'org.projectlombok:lombok'
   testAnnotationProcessor 'org.projectlombok:lombok'
 
-  testImplementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
+  testImplementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
-  testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.2.2'
+  testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.1'
 }
 
 tasks.named('test') {
   useJUnitPlatform()
+}
+
+tasks.named('compileJava') {
+  inputs.files(tasks.named('processResources'))
 }
