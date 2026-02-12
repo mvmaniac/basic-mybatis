@@ -69,5 +69,105 @@
       "name": "app.mybatis.aop.enabled",
       "type": "java.lang.String",
       "description": "Description for app.mybatis.aop.enabled."
+    },
+    {
+      "name": "spring.datasource.hikari.mysql.driver-class-name",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mysql.driver-class-name."
+    },
+    {
+      "name": "spring.datasource.hikari.mysql.jdbc-url",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mysql.jdbc-url."
+    },
+    {
+      "name": "spring.datasource.hikari.mysql.username",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mysql.username."
+    },
+    {
+      "name": "spring.datasource.hikari.mysql.password",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mysql.password."
+    },
+    {
+      "name": "spring.datasource.hikari.mysql.pool-name",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mysql.pool-name."
+    },
+    {
+      "name": "spring.datasource.hikari.mysql.idle-timeout",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mysql.idle-timeout."
+    },
+    {
+      "name": "spring.datasource.hikari.mysql.connection-timeout",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mysql.connection-timeout."
+    },
+    {
+      "name": "spring.datasource.hikari.mysql.minimum-idle",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mysql.minimum-idle."
+    },
+    {
+      "name": "spring.datasource.hikari.mysql.maximum-pool-size",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mysql.maximum-pool-size."
+    },
+    {
+      "name": "spring.datasource.hikari.mysql.max-lifetime",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mysql.max-lifetime."
+    },
+    {
+      "name": "spring.datasource.hikari.mariadb.driver-class-name",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mariadb.driver-class-name."
+    },
+    {
+      "name": "spring.datasource.hikari.mariadb.jdbc-url",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mariadb.jdbc-url."
+    },
+    {
+      "name": "spring.datasource.hikari.mariadb.username",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mariadb.username."
+    },
+    {
+      "name": "spring.datasource.hikari.mariadb.password",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mariadb.password."
+    },
+    {
+      "name": "spring.datasource.hikari.mariadb.pool-name",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mariadb.pool-name."
+    },
+    {
+      "name": "spring.datasource.hikari.mariadb.idle-timeout",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mariadb.idle-timeout."
+    },
+    {
+      "name": "spring.datasource.hikari.mariadb.connection-timeout",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mariadb.connection-timeout."
+    },
+    {
+      "name": "spring.datasource.hikari.mariadb.minimum-idle",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mariadb.minimum-idle."
+    },
+    {
+      "name": "spring.datasource.hikari.mariadb.maximum-pool-size",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mariadb.maximum-pool-size."
+    },
+    {
+      "name": "spring.datasource.hikari.mariadb.max-lifetime",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.hikari.mariadb.max-lifetime."
     }
   ] }

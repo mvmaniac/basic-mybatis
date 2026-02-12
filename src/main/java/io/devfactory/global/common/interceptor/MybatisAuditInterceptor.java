@@ -72,24 +72,20 @@ public class MybatisAuditInterceptor implements Interceptor {
   }
 
   // TODO: Map 지원?
-  @SuppressWarnings({"unchecked", "squid:S3740"})
   private void auditing(SqlCommandType sqlType, Object param) {
-    if (param instanceof MapperMethod.ParamMap paramMap) {
-      auditingWithParamMap(sqlType, paramMap);
-
-    } else if (param instanceof final List<?> list) {
-      auditingWithList(sqlType, list);
-
-    } else {
-      auditingWithObject(sqlType, param);
+    switch (param) {
+      case MapperMethod.ParamMap<?> paramMap -> auditingWithParamMap(sqlType, paramMap);
+      case List<?> list -> auditingWithList(sqlType, list);
+      default -> auditingWithObject(sqlType, param);
     }
   }
 
   private void auditingWithParamMap(SqlCommandType sqlType,
-      MapperMethod.ParamMap<Object> paramMap) {
-    for (Map.Entry<String, Object> entry : paramMap.entrySet()) {
-      if (!entry.getKey().startsWith("param") && !BeanUtils.isSimpleValueType(entry.getValue().getClass())) {
-        auditing(sqlType, entry.getValue());
+      MapperMethod.ParamMap<?> paramMap) {
+    for (Map.Entry<String, ?> entry : paramMap.entrySet()) {
+      final var value = entry.getValue();
+      if (!entry.getKey().startsWith("param") && !BeanUtils.isSimpleValueType(value.getClass())) {
+        auditing(sqlType, value);
       }
     }
   }
@@ -132,7 +128,7 @@ public class MybatisAuditInterceptor implements Interceptor {
     if (hasAnnotationDate(field)) {
       return LocalDateTime.now();
     }
-    
+
     // TODO: 시큐리티 적용?, 근데 여기서 꺼내서 사용하면 매번 호출하게됨...
     if (hasAnnotationBy(field)) {
       return "테스트ID";

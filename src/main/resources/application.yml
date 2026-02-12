@@ -5,13 +5,13 @@ spring:
 
 mybatis:
   configuration:
-    jdbc-type-for-null: varchar
+    jdbc-type-for-null: other
     # dto나 vo 사용시 camelcase로 맵핑
     # 생성자로 맵핑 할 경우 설정할 필요 없지만, 생성자 순서대로 select를 해야 함
     map-underscore-to-camel-case: true 
     call-setters-on-nulls: true # map 사용시 null 컬럼도 리턴함
-    multiple-result-sets-enabled: true
-    default-fetch-size: 500
+    default-statement-timeout: 30 # 초단위, 쿼리 실행이 30초를 넘으면 중단
+    # default-fetch-size: 500 # 대량 조회 필요시 사용
 
   mysql:
     mapper-locations: classpath:mybatis/mysql/**/*.xml

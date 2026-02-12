@@ -61,12 +61,11 @@ public class DataSourceConfigSupport {
   private Configuration mapTo(MybatisProperties.CoreConfiguration source) {
     Configuration target = new Configuration();
     
-    PropertyMapper mapper = PropertyMapper.get().alwaysApplyingWhenNonNull();
+    PropertyMapper mapper = PropertyMapper.get();
     mapper.from(source.getSafeRowBoundsEnabled()).to(target::setSafeRowBoundsEnabled);
     mapper.from(source.getSafeResultHandlerEnabled()).to(target::setSafeResultHandlerEnabled);
     mapper.from(source.getMapUnderscoreToCamelCase()).to(target::setMapUnderscoreToCamelCase);
     mapper.from(source.getAggressiveLazyLoading()).to(target::setAggressiveLazyLoading);
-    mapper.from(source.getMultipleResultSetsEnabled()).to(target::setMultipleResultSetsEnabled);
     mapper.from(source.getUseGeneratedKeys()).to(target::setUseGeneratedKeys);
     mapper.from(source.getUseColumnLabel()).to(target::setUseColumnLabel);
     mapper.from(source.getCacheEnabled()).to(target::setCacheEnabled);
@@ -93,6 +92,7 @@ public class DataSourceConfigSupport {
     mapper.from(source.getDefaultSqlProviderType()).to(target::setDefaultSqlProviderType);
     mapper.from(source.getConfigurationFactory()).to(target::setConfigurationFactory);
     mapper.from(source.getDefaultEnumTypeHandler()).to(target::setDefaultEnumTypeHandler);
+    mapper.from(source.getDatabaseId()).to(target::setDatabaseId);
 
     return target;
   }
